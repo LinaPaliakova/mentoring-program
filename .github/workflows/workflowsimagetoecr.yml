@@ -57,6 +57,7 @@ jobs:
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
+        id: ecs-deploy
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
@@ -65,10 +66,9 @@ jobs:
           wait-for-service-stability: true
 
       - name: Check if deployment was successful
-        id: check-deployment
         run: |
             CURRENT_TASK_DEF_ARN=$(aws ecs describe-services --cluster ${{ env.ECS_CLUSTER }} --services ${{ env.ECS_SERVICE }} --query services[0].deployments[0].taskDefinition | jq -r ".")
-            NEW_TASK_DEF_ARN=${{ steps.task-def.outputs.task-definition-arn }}
+            NEW_TASK_DEF_ARN=${{ steps.ecs-deploy.outputs.task-definition-arn }}
             echo "Current task arn: $CURRENT_TASK_DEF_ARN"
             echo "New task arn: $NEW_TASK_DEF_ARN"
             if [ "$CURRENT_TASK_DEF_ARN" != "$NEW_TASK_DEF_ARN" ]; then
