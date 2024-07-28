@@ -67,7 +67,7 @@ jobs:
       - name: Check if deployment was successful
         id: check-deployment
         run: |
-            CURRENT_TASK_DEF_ARN=$(aws ecs describe-services --cluster ${{ env.ECS_CLUSTER }} --services ${{ matrix.service }} --query services[0].deployments[0].taskDefinition | jq -r ".")
+            CURRENT_TASK_DEF_ARN=$(aws ecs describe-services --cluster ${{ env.ECS_CLUSTER }} --services ${{ env.ECS_SERVICE }} --query services[0].deployments[0].taskDefinition | jq -r ".")
             NEW_TASK_DEF_ARN=${{ steps.ecs-deploy.outputs.task-definition-arn }}
             echo "Current task arn: $CURRENT_TASK_DEF_ARN"
             echo "New task arn: $NEW_TASK_DEF_ARN"
