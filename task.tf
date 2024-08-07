@@ -5,7 +5,7 @@ resource "aws_ecs_task_definition" "this" {
    { name = "NODE_ENV", value = "production" }
   ],
   essential = true,
-  image = data.docker_image.local_image.name,
+  image = resource.docker_registry_image.this.name,
   name = local.container_name,
   portMappings = [{ containerPort = 8080 }],
  }])
