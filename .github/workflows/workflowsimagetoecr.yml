@@ -34,7 +34,7 @@ jobs:
       -  name: Initialise project and deploy terraform
          run: |
           terraform fmt
-          terraform init
-          terraform plan
-          terraform apply ${{ secrets.EXAMPLE_API_KEY }}  
+          terraform init -input=false
+          terraform plan -input=false
+          terraform apply ${{ secrets.EXAMPLE_API_KEY }}  -input=false
           
