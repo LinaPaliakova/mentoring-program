@@ -36,5 +36,5 @@ jobs:
           terraform fmt
           terraform init -input=false
           terraform plan -input=false
-          terraform apply ${{ secrets.EXAMPLE_API_KEY }}  -input=false
+          terraform apply ${{ secrets.EXAMPLE_API_KEY }} 
           
