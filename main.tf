@@ -42,3 +42,11 @@ resource "aws_ecs_service" "this" {
  lifecycle {
   ignore_changes = [desired_count] # Allow external changes to happen without Terraform conflicts, particularly around auto-scaling.
  }
+
+network_configuration {
+  security_groups = [module.vpc.default_security_group_id]
+  subnets = module.vpc.private_subnets
+ }
+
+ 
+}
