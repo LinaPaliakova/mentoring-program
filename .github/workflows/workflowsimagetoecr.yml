@@ -35,6 +35,6 @@ jobs:
          run: |
           terraform fmt
           terraform init -input=false
-          terraform plan -input=false
-          terraform apply ${{ secrets.EXAMPLE_API_KEY }} 
+          terraform plan -out=tfplan
+          terraform apply tfplan
           
