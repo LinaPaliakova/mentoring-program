@@ -17,26 +17,11 @@ name: "ECR-ECS-GH-Deployment"
         required: true    
 
 jobs:
-  ci:
-    name: "ECR-ECS-GH-Integration"
-    runs-on: "ubuntu-latest"
-    steps:
-      - name: "Checkout Code"
-        uses: "actions/checkout@v2"
-
-      - name: "Lint code"
-        run: |
-          echo "Linting repository"
-          
-      - name: "Run unit tests"
-        run: |
-          echo "Running unit tests"
-
+ 
   cd:
     name: "ECR-ECS-GH-Deployment"
     runs-on: "ubuntu-latest"
-    needs:
-      - ci
+   
     steps:
       - name: "Checkout Code"
         uses: "actions/checkout@v2"
