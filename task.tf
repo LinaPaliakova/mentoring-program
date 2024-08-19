@@ -1,7 +1,7 @@
 data "aws_iam_role" "ecs_task_execution_role" { name = "ecsTaskExecutionRole" }
 resource "aws_ecs_task_definition" "this" {
  container_definitions = jsonencode([{
-  image = resource.docker_registry_image.this.name,
+  image = "${aws_ecr_repository.my_repository.repository_url}:latest",
   name = local.container_name,
   portMappings = [{ containerPort = 8080 }],
  }])
