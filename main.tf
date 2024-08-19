@@ -55,6 +55,7 @@ resource "aws_ecs_cluster" "my_cluster" {
 # ECS Task Definition Creation
 resource "aws_ecs_task_definition" "my_task_definition" {
   family = "my-task-definition"
+  requires_compatibilities = ["FARGATE"]
   container_definitions = jsonencode([
     {
       name = "my-container"
