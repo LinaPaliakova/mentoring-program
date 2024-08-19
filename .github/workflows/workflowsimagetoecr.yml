@@ -31,7 +31,7 @@ jobs:
             region = "us-east-1"
           terraform_version: 1.4.2
       
-      - name: Initialize Terraformworking-directory: ./terraform
+      - name: Initialize Terraformworking-directory
         run: terraform init -input=false  
         env:
           TF_VAR_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
