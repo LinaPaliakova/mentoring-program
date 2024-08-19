@@ -19,14 +19,4 @@ module "ecr" {
  })
 }
 
-resource "docker_image" "this" {
- name = format("%v:%v", module.ecr.repository_url, formatdate("YYYY-MM-DD'T'hh-mm-ss", timestamp()))
 
- build { context = "." } # Path to our local Dockerfile
-}
-
-# * Push our container image to our ECR.
-resource "docker_registry_image" "this" {
- keep_remotely = true # Do not delete old images when a new image is pushed
- name = resource.docker_image.this.name
-}
