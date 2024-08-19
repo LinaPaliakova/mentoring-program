@@ -1,10 +1,6 @@
 data "aws_iam_role" "ecs_task_execution_role" { name = "ecsTaskExecutionRole" }
 resource "aws_ecs_task_definition" "this" {
  container_definitions = jsonencode([{
-  environment: [
-   { name = "NODE_ENV", value = "production" }
-  ],
-  essential = true,
   image = resource.docker_registry_image.this.name,
   name = local.container_name,
   portMappings = [{ containerPort = 8080 }],
