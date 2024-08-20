@@ -1,21 +1,21 @@
 variable "aws_region" {
-  description = "AWS region"
+  default = "us-east-1"
 }
 
 
 
 variable "ecs_task_definition_name" {
-  description = "ECS task definition name"
+  default = "my_task"
 }
 
 variable "ecs_container_name" {
-  description = "ECS task container name"
+   default = "my_container"
 }
 
 variable "ecs_cluster_name" {
-  description = "ECS cluster name"
+  default = "my_cluster"
 }
 
 variable "ecs_service_name" {
-  description = "ECS service name"
+  default = "my_ecs_service"
 }
