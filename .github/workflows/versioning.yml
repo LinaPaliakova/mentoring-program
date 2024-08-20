@@ -1,9 +1,5 @@
 name: test
-on:
-  push:
-    branches:
-      # Change this if your primary branch is not main
-      - main
+on:  workflow_dispatch
      
 jobs:
   main:
