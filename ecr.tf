@@ -4,7 +4,7 @@ module "ecr" {
 
 
  repository_force_delete = true
- repository_name = local.example
+ repository_name = "my_repo"
  repository_lifecycle_policy = jsonencode({
   rules = [{
    action = { type = "expire" }
