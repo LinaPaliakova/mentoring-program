@@ -1,34 +1,21 @@
-variable REGION {
-  default = "us-east-1"
+variable "aws_region" {
+  description = "AWS region"
 }
 
 
-variable VPC_NAME {
-  default = "VPC"
+
+variable "ecs_task_definition_name" {
+  description = "ECS task definition name"
 }
 
-variable Zone {
-  default = "us-east-1a"
+variable "ecs_container_name" {
+  description = "ECS task container name"
 }
 
-
-variable vpcCIDR {
-  default = "10.0.0.0/16"
+variable "ecs_cluster_name" {
+  description = "ECS cluster name"
 }
 
-
-variable PubSub1CIDR {
-  default = "10.0.101.0/24"
-}
-
-variable PrivSub1CIDR {
-  default = "10.0.1.0/24"
-}
-
-variable PubSub2CIDR {
-  default = "10.0.102.0/24"
-}
-
-variable PrivSub2CIDR {
-  default = "10.0.2.0/24"
+variable "ecs_service_name" {
+  description = "ECS service name"
 }
