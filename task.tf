@@ -5,7 +5,7 @@ resource "aws_ecs_task_definition" "app_runner" {
    { name = "NODE_ENV", value = "production" }
   ],
   essential = true,
-  image = "{aws_ecr_repository.my_repo.repository_url}:latest",
+  image = "${aws_ecr_repository.my_repo.repository_url}:latest",
   name = local.container_name,
   portMappings = [{ containerPort = 8080 }],
  }])
