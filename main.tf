@@ -16,14 +16,3 @@ locals {
 }
 
 
-resource "aws_ecs_service" "my_service" {
- cluster = module.ecs.cluster_id
- desired_count = 1
- launch_type = "FARGATE"
- name = "${local.example}-service"
- task_definition = resource.aws_ecs_task_definition.this.arn
-
- lifecycle {
-  ignore_changes = [desired_count] # Allow external changes to happen without Terraform conflicts, particularly around auto-scaling.
- }
-}
