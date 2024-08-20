@@ -26,12 +26,12 @@ module "vite_app_repository" {
     ]
   })
 
-  tags = merge(var.common_tags)
+  
 }
 
 resource "aws_ecs_cluster" "vite_app_cluster" {
   name = var.ecs_cluster_name
-  tags = var.common_tags
+  
 }
 
 resource "aws_ecs_task_definition" "vite_app_runner" {
@@ -57,7 +57,7 @@ resource "aws_ecs_task_definition" "vite_app_runner" {
       essential = true
     }
   ])
-  tags = var.common_tags
+  
 }
 
 resource "aws_ecs_service" "vite_app_service" {
