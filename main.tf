@@ -6,10 +6,7 @@ terraform {
    source  = "hashicorp/aws"
    version = ">= 5.37"
   }
-  docker = {
-   source  = "kreuzwerker/docker"
-   version = "~> 3.0"
-  }
+ 
  }
 }
 
@@ -19,7 +16,7 @@ locals {
 }
 
 
-resource "aws_ecs_service" "this" {
+resource "aws_ecs_service" "my_service" {
  cluster = module.ecs.cluster_id
  desired_count = 1
  launch_type = "FARGATE"
