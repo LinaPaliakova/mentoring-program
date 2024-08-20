@@ -1,40 +1,21 @@
-name: Auto Tag my Application
+name: test
 on:
   push:
     branches:
+      # Change this if your primary branch is not main
       - main
-concurrency: production
+     
 jobs:
-  Patch:
+  main:
     runs-on: ubuntu-latest
+    environment:
+      name: production #your environment name
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: '0'
-    - name: Minor version for each merge
-      id: taggerDryRun
-      uses: anothrNick/github-tag-action@1.36.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN1 }}
-        WITH_V: true
-        DRY_RUN: true
-
-    - name: echo new tag
-      run: |
-        echo "The next tag version will be: ${{ steps.taggerDryRun.outputs.new_tag }}"
-    - name: echo tag
-      run: |
-        echo "The current tag is: ${{ steps.taggerDryRun.outputs.tag }}"
-    - name: echo part
-      run: |
-        echo "The version increment was: ${{ steps.taggerDryRun.outputs.part }}"
-    # DO MY BUILD HERE
-    # IN CASE OF FAILURE, THE STEP BELOW WILL NOT RUN.
-    
-
-    - name: Minor version for each merge
-      id: taggerFinal
-      uses: anothrNick/github-tag-action@1.36.0
-      env:
-        GITHUB_TOKEN: ${{ secrets.secrets.TOKEN1 }}
-        WITH_V: true
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
