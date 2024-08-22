@@ -5,7 +5,7 @@ module "vite_app_repository" {
 
   repository_name                 = "vite-app-repository"
   repository_type                 = "private"
-  repository_image_tag_mutability = "IMMUTABLE"
+  repository_image_tag_mutability = "MUTABLE"
   create_lifecycle_policy         = true
 
   # only keep the latest 5 images
