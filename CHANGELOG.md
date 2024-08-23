@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/LinaPaliakova/mentoring-program/compare/v1.0.0...v1.1.0) (2024-08-23)
+
+
+### Features
+
+* Update app.py(version2) ([d5ef564](https://github.com/LinaPaliakova/mentoring-program/commit/d5ef564275663edfc4f7886a4fe749479573c4d0))
+
 ## 1.0.0 (2024-08-22)
 
 
